@@ -4,16 +4,10 @@ permissions:
       actions: read
       contents: write
 
-on:
-  push:
-    branches:
-      # only run when there are pushes to the main branch (not on PRs)
-      - main
+on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
     runs-on: ubuntu-24.04
     steps:
       - uses: anchore/sbom-action@v0
-        with:
-          path: ../../
